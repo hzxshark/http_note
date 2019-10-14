@@ -1,0 +1,399 @@
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<meta content="text/css" http-equiv="Content-Style-Type">
+<title>http首部字段</title>
+</head>
+<body>
+<h1 align="center" class="root">
+<a name="b9aa22deba98b3b20c7ac8aca2">http首部字段</a>
+</h1>
+<div align="center" class="globalOverview">
+<img src="./img/index.png"></div>
+<h2 class="topic">
+<a name="b58888b5ceebbf0e68dada0656">通用首部字段</a>
+</h2>
+<div class="overview">
+<img src="./img/common.jpg"></div>
+<h3 class="topic">
+<a name="15b7de42-8b80-40d7-87d5-1cc7c5f606d2">&nbsp;Cache-Control（缓存控制指令）</a>
+</h3>
+<div class="notesContainer">
+<p>缓存请求指令</p>
+
+<table>
+  <th>
+    <tr>
+      <td>指令</td>
+      <td>参数</td>
+      <td>说明</td>
+    </tr>
+  </th>
+  <tbody>
+    <tr>
+      <td>no-cache</td>
+      <td>无</td>
+      <td>强制向源服务器再次验证</td>
+    </tr>
+    <tr>
+      <td>no-store</td>
+      <td>无</td>
+      <td>不缓存请求或响应的任何内容</td>
+    </tr>
+    <tr>
+      <td>max-age = [ 秒]</td>
+      <td>必需</td>
+      <td>响应的最大Age值</td>
+    </tr>
+    <tr>
+      <td>max-stale( = [ 秒])</td>
+      <td>可省略</td>
+      <td>接收已过期的响应</td>
+    </tr>
+    <tr>
+      <td>min-fresh = [ 秒]</td>
+      <td>必需</td>
+      <td>期望在指定时间内的响应仍有效</td>
+    </tr>
+    <tr>
+      <td>no-transform	</td>
+      <td>无</td>
+      <td>代理不可更改媒体类型</td>
+    </tr>
+    <tr>
+      <td>only-if-cached</td>
+      <td>无</td>
+      <td>从缓存获取资源</td>
+    </tr>
+    <tr>
+      <td>cache-extension</td>
+      <td> - </td>
+      <td>新指令标记（token）</td>
+    </tr>
+  
+  </tbody>
+
+</table>
+
+<p>缓存响应指令</p>
+
+<table>
+  <th>
+    <tr>
+      <td>指令</td>
+      <td>参数</td>
+      <td>说明</td>
+    </tr>
+  </th>
+  <tbody>
+    <tr>
+      <td>public</td>
+      <td>无</td>
+      <td>可向任意方提供响应的缓存</td>
+    </tr>
+    <tr>
+      <td>private</td>
+      <td>可省略</td>
+      <td>仅向特定用户返回响应</td>
+    </tr>
+    <tr>
+      <td>no-cache</td>
+      <td>可省略</td>
+      <td>缓存前必须先确认其有效性</td>
+    </tr>
+    <tr>
+      <td>no-store</td>
+      <td>无</td>
+      <td>不缓存请求或响应的任何内容</td>
+    </tr>
+    <tr>
+      <td>no-transform</td>
+      <td>无</td>
+      <td>代理不可更改媒体类型</td>
+    </tr>
+    <tr>
+      <td>must-revalidate</td>
+      <td>无</td>
+      <td>可缓存但必须再向源服务器进行确认</td>
+    </tr>
+    <tr>
+      <td>proxy-revalidate</td>
+      <td>无</td>
+      <td>要求中间缓存服务器对缓存的响应有效性再进行确认</td>
+    </tr>
+    <tr>
+      <td>max-age = [ 秒]</td>
+      <td>必需</td>
+      <td>响应的最大Age值</td>
+    </tr>
+    <tr>
+      <td>s-maxage = [ 秒]</td>
+      <td>必需</td>
+      <td>公共缓存服务器响应的最大Age值</td>
+    </tr>
+    <tr>
+      <td>cache-extension</td>
+      <td> - </td>
+      <td>新指令标记（token）</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+<h3 class="topic">
+<a name="3e54734e-bbba-407a-b679-2d3912aff488">&nbsp;Connection（管理持久连接）</a>
+</h3>
+<div class="notesContainer">
+<p>有两个作用：</p>
+<p>1.控制不再转发给代理的首部字段，</p>
+<p>2.管理持久连接Close  Keep-Alive</p>
+<p></p>
+<p>eg1:</p>
+<p>Connection:Upgrade</p>
+<p>上面的意思就是不再把首部字段Upgrade转发给代理服务器；</p>
+<p></p>
+<p>tips:</p>
+<p>HTTP/1.1默认持久连接，但之前的默认不是</p>
+<p></p>
+<p></p>
+</div>
+<h3 class="topic">
+<a name="942d90cc-9e3c-43b9-8761-316cb71aab60">&nbsp;Date</a>
+</h3>
+<h3 class="topic">
+<a name="8ea930d9-859d-4fc5-9e58-212e9a42ab0f">&nbsp;Pragma（仅向后兼容用）(Pragma: no-cache === Cache-Control : no-cache)</a>
+</h3>
+<h3 class="topic">
+<a name="9b9d7a39-be55-47f1-acdb-e458351fc1b4">&nbsp;Trailer（说明用）</a>
+</h3>
+<h3 class="topic">
+<a name="3ba89cf1-0aee-46d1-bcc3-5553bac972ea">&nbsp;Transfer-Encoding（传输编码格式）</a>
+</h3>
+<h3 class="topic">
+<a name="adcb9182-3e9c-40dd-bcaf-c15184e9993a">&nbsp;Upgrade（是否可以使用更高的版本进行通信）</a>
+</h3>
+<h3 class="topic">
+<a name="8117f3d5-b8bc-4a1a-999f-1c228f29661a">&nbsp;Via（追踪传输路径，避免回环）</a>
+</h3>
+<h3 class="topic">
+<a name="eba97ad8-6f2c-4b2b-9feb-10aa9605f1f6">&nbsp;Warning</a>
+</h3>
+<h2 class="topic">
+<a name="193b56735e689ae86a01d91513">请求首部字段</a>
+</h2>
+<div class="overview">
+<img src="./img/request.jpg"></div>
+<h3 class="topic">
+<a name="cf23c52c-9f80-4eef-a29c-f65a5824dac9">&nbsp;Accept</a>
+</h3>
+<div class="notesContainer">
+<p>用户代理能够处理的媒体类型或者媒体类型的优先级，q表示优先级0-1</p>
+</div>
+<h3 class="topic">
+<a name="44f96d44-3c5d-44ca-bf8d-3a37a67471b2">&nbsp;Accept-Charset</a>
+</h3>
+<div class="notesContainer">
+<p>用户代理能够处理的字符集或者处理字符集的优先级；</p>
+</div>
+<h3 class="topic">
+<a name="3be5453a-ba85-4ed1-9f75-8ce075adbc7a">&nbsp;Accept-Encoding</a>
+</h3>
+<div class="notesContainer">
+<p>用户代理支持的内容编码及内容编码的优先级</p>
+<p>内容编码格式有：gzip,compress,deflate,indentity(默认，不压缩)</p>
+</div>
+<h3 class="topic">
+<a name="5302351b-87c1-4edd-857a-462f6f4d6a33">&nbsp;Accept-Language</a>
+</h3>
+<h3 class="topic">
+<a name="7e035773-695d-4cde-ab98-9a2f6ae65174">&nbsp;Authorization</a>
+</h3>
+<div class="notesContainer">
+<p>告知服务器用户代理的认证信息</p>
+</div>
+<h3 class="topic">
+<a name="a6d6db7a-c06d-4b19-8907-61253db98871">&nbsp;Except</a>
+</h3>
+<h3 class="topic">
+<a name="b69b5f83-c8bd-473d-8ed9-c3388783f67b">&nbsp;From（电子邮件）</a>
+</h3>
+<h3 class="topic">
+<a name="c739a3b5-d5b8-49cb-95ba-12a6cc860e4e">&nbsp;Host（主机）</a>
+</h3>
+<h3 class="topic">
+<a name="f79fa289-611f-461f-a23a-a309e120d75b">&nbsp;If-Match（字段值与ETag相同则执行）</a>
+</h3>
+<h3 class="topic">
+<a name="dd9db672-d723-4386-b52d-772ad91997c6">&nbsp;If-Modify-Since（确认代理或客户端资源的有效性）</a>
+</h3>
+<h3 class="topic">
+<a name="75320bcb-e4d9-4830-9472-0467d67e58c6">&nbsp;If-Non-Match</a>
+</h3>
+<div class="notesContainer">
+<p>与if-match相反，一般用来请求最新资源，与if-modify-since的功能差不多</p>
+<p> 
+</p>
+</div>
+<h3 class="topic">
+<a name="c1e43057-399f-46c7-98cf-252c38a195df">&nbsp;If-Range</a>
+</h3>
+<div class="notesContainer">
+<p>告知服务器若指定的值和请求资源的ETag值或时间一致时做范围请求处理，否则返回全体资源</p>
+<p>这样可以避免如果资源不存在或者更新时需要发送两次请求</p>
+</div>
+<h3 class="topic">
+<a name="4bc53e2c-4348-4f97-922e-9690ffb4a215">&nbsp;If-UnModified-Since</a>
+</h3>
+<h3 class="topic">
+<a name="4c834191-f3c6-4112-b41d-06ad06bffab9">&nbsp;Max-ForWards（转发次数，避免得不到相应结果）</a>
+</h3>
+<h3 class="topic">
+<a name="dae03199-5df9-4eaf-8a73-c006097b92af">&nbsp;Proxy-Authorization（客户端与代理之间的认证）</a>
+</h3>
+<h3 class="topic">
+<a name="a75b38fc-2163-4b0b-97b9-eddc6ca0bb56">&nbsp;Range（局部请求）</a>
+</h3>
+<h3 class="topic">
+<a name="22748b67-3eae-47af-b3fd-2b12dc08502a">&nbsp;Referer(Referrer)（请求的原始资源URI）</a>
+</h3>
+<h3 class="topic">
+<a name="6989eceb-da12-4097-aa82-d65b4279b859">&nbsp;Te（编码方式与Accept-Encoding差不多）</a>
+</h3>
+<h3 class="topic">
+<a name="52401398-d5e9-44f2-9044-d427ec2db1da">&nbsp;User-Agent（浏览器信息和用户代理名称等信息）</a>
+</h3>
+<h2 class="topic">
+<a name="67ddbcb1-85c9-4478-a0aa-580e9fdcd971">响应首部字段</a>
+</h2>
+<div class="overview">
+<img src="./img/response.jpg"></div>
+<h3 class="topic">
+<a name="3d616c31-3a12-4bba-8c07-aeda177bda07">&nbsp;Accept-Range（服务器是否具有范围处理的能力）enum{bytes：能，none：不能}</a>
+</h3>
+<h3 class="topic">
+<a name="50498718-a38f-460c-9973-792eaebfb500">&nbsp;Age（源服务器在多久前创立了响应，单位(s)）</a>
+</h3>
+<h3 class="topic">
+<a name="dd6ccf08-4aff-445b-8715-f3814810d0e8">&nbsp;ETag（资源唯一标识）</a>
+</h3>
+<div class="notesContainer">
+<p>URI没有变化资源更新时，etag也会发生变化，这个字段告诉客户端资源的唯一标识，在断点连接的时候常用，</p>
+<p>etag分强弱之分，顾名思义，强的就是细微的一点变化etag值就会发生变化，弱的只有在资源发生根本改变的时候才会变化；</p>
+</div>
+<h3 class="topic">
+<a name="923d7570-4f66-488d-836d-eb1896d2b7a2">&nbsp;Location（重定向）</a>
+</h3>
+<h3 class="topic">
+<a name="44438494-5f7b-47c8-9864-df36730c6193">&nbsp;Proxy-Authenticate（代理服务器的认证信息发送给客户端）</a>
+</h3>
+<h3 class="topic">
+<a name="84c88cda-6235-4a88-b5cc-067a25df89f5">&nbsp;Retry-After（稍后访问可以为具体时间，也可以为一段时间后）</a>
+</h3>
+<h3 class="topic">
+<a name="4d9eecd2-485a-4ffb-be99-bbbb4d846370">&nbsp;Server（服务器名称，版本号之类的）</a>
+</h3>
+<h3 class="topic">
+<a name="ee41f0af-b252-4593-a155-85bd5c4c0c36">&nbsp;Vary（缓存控制）</a>
+</h3>
+<h3 class="topic">
+<a name="fd49ebe8-ecd3-43c8-86eb-c907531191a1">&nbsp;WWW-Authenticate（认证方案）</a>
+</h3>
+<h2 class="topic">
+<a name="896ca4fa-5b44-4fb2-98e4-84aec73ecc49">实体首部字段</a>
+</h2>
+<div class="overview">
+<img src="./img/entity.jpg"></div>
+<h3 class="topic">
+<a name="030f3253-7713-496b-b704-80f5170ae16b">&nbsp;Allow（允许访问的方式GET,POST...）</a>
+</h3>
+<h3 class="topic">
+<a name="c4d518e0-e0ef-49ba-8127-af3dada843d1">&nbsp;Content-Encoding（编码方式，gzip...）</a>
+</h3>
+<h3 class="topic">
+<a name="a2d80292-951f-4497-8f2b-3c07d785c39e">&nbsp;Content-Language</a>
+</h3>
+<h3 class="topic">
+<a name="7d8ab414-4026-4428-b400-eac74874f1d7">&nbsp;Content-Length（编码传输时不能使用该字段）</a>
+</h3>
+<h3 class="topic">
+<a name="f640c771-bc53-4a29-8008-b561468dee1d">&nbsp;Content-Location</a>
+</h3>
+<div class="notesContainer">
+<p>报文主题返回资源对应的的URI，更具体的URI</p>
+</div>
+<h3 class="topic">
+<a name="309993e6-c4d2-44a3-8522-2b908413e180">&nbsp;Content-MD5</a>
+</h3>
+<div class="notesContainer">
+<p>对报文主题进行MD5算法生成128位二进制数，再通过base64编码后写进Content-MD5字段中，客户端接收到后在执行一次相同的MD5算法，与字段值作比较，以此来判断报文的准确性</p>
+</div>
+<h3 class="topic">
+<a name="2674205b-596e-4610-8702-b61c4a186e1c">&nbsp;Content-Range</a>
+</h3>
+<h3 class="topic">
+<a name="dbe3fccb-76c0-4eea-af89-ed11828b43f9">&nbsp;Content-Type</a>
+</h3>
+<h3 class="topic">
+<a name="323207fa-e997-4218-a4e2-cff6c3c1f695">&nbsp;Expires（失效时间，优先级低于max-age）</a>
+</h3>
+<h3 class="topic">
+<a name="a6c41607-c6d8-43f3-9cfc-08ae983dea8d">&nbsp;Last-Modified</a>
+</h3>
+<h2 class="topic">
+<a name="722b9221-997c-4c3d-a70f-0c862ecd4969">为Cookie服务的首部字段</a>
+</h2>
+<div class="overview">
+<img src="./img/cookie.png"></div>
+<h3 class="topic">
+<a name="1b451f96-9512-4cec-8a46-ad2f9930546c">&nbsp;Set-Cookie</a>
+</h3>
+<div class="notesContainer">
+<p>NAME：赋予cookie的名称和值</p>
+<p>expires: 省略时在session(会话保存)</p>
+<p>path:</p>
+<p>domain:</p>
+<p>secure:仅在https安全通信时才会发送cookie</p>
+<p>httpOnly: 加限制条件，使cookie不能被js脚本访问，防止XSS攻击</p>
+<p></p>
+</div>
+<h3 class="topic">
+<a name="7f96aa11-d098-4ab3-afb8-61c4df4652e8">&nbsp;Cookie</a>
+</h3>
+<h2 class="topic">
+<a name="09b35fdc-2ba3-41dc-9658-00b8793f7669">其他首部字段</a>
+</h2>
+<div class="overview">
+<img src="./img/other.jpg"></div>
+<h3 class="topic">
+<a name="153a7bc5-7c59-4bdd-bd0a-2027523b0db9">&nbsp;X-Frame-Options</a>
+</h3>
+<div class="notesContainer">
+<p>控制网站内容在frame中的显示，防止劫持页面</p>
+<p>DENY:拒绝</p>
+<p>SAMEORIGIN:仅同源域名下的网页匹配时许可</p>
+</div>
+<h3 class="topic">
+<a name="5971e697-f1bc-4008-9b8a-b65700b6ae6d">&nbsp;X-XSS-Protection</a>
+</h3>
+<div class="notesContainer">
+<p>针对跨脚本攻击的一种对策</p>
+<p>value值：</p>
+<p>0： XSS过滤设置成无效</p>
+<p>1：XSS过滤设置成有效</p>
+</div>
+<h3 class="topic">
+<a name="31dd8056-19cb-450a-9dc3-95fef997552d">&nbsp;DNT(Do Not Track)（拒绝追踪）</a>
+</h3>
+<div class="notesContainer">
+<p>value</p>
+<p>0：允许</p>
+<p>1：不允许</p>
+</div>
+<h3 class="topic">
+<a name="fa13e551-b5e0-4e7d-a87b-ee6d62c69a91">&nbsp;P3P(The Platform for Privacy Preferences)（在线隐私偏好平台）</a>
+</h3>
+<div class="notesContainer">
+<p>个人隐私仅供程序可理解，达到保护用户隐私的目的；</p>
+</div>
+</body>
+</html>
